@@ -1,6 +1,6 @@
 import { Route, Routes, Link, Navigate, useLocation } from "react-router-dom";
 import './Home.css'
-import { ColorPicker } from "./routesList";
+import { ColorPicker, NewColorForm } from "./routesList";
 
 
 function Home() {
@@ -11,6 +11,7 @@ function Home() {
             <h1 classname="choose-color">Choose a color</h1>}
       <Routes>
         <Route exact path='/colors/:color' element={<ColorPicker />} />
+        <Route exact path='/colors/new' element={<NewColorForm />} />
         <Route path="*" element={<Navigate to="/colors" />} /> 
       </Routes>
 
