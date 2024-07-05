@@ -1,10 +1,21 @@
-import Router from "react-router";
-Router.useParams = jest.fn();
-import DogDetails from './DogDetails';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import {DogDetails} from './routesList';  
 
-import { render, screen, waitFor } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
-test('renders learn react link', () => {
-  Router.useParams.mockReturnValue({a: "b"});	
-  render(<DogDetail />)
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'), 
+  useParams: jest.fn(),
+}));
+
+test('renders DogDetails component', () => {
+  useParams.mockReturnValue({ name: 'duke' });
+
+  render(
+    <Router>
+      <DogDetails />
+    </Router>
+  );
+
 });
