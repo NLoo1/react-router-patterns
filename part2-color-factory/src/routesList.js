@@ -1,9 +1,18 @@
 import React, { useState } from "react";
 
-import { useParams, Link, redirect, useNavigate } from "react-router-dom";
+import { useParams, Link, Navigate, useNavigate } from "react-router-dom";
 
-export function ColorPicker() {
+export function ColorPicker({colors}) {
+
+  // Check if color exists in current list first
+  // If not, redirect
+
     const params = useParams()
+    const c = colors.find(e => e.color.toUpperCase() === params.color.toUpperCase());
+  
+    if (!c) {
+      return <Navigate to='/colors' />
+    }
     return <div className="color" style={{backgroundColor: params.color}}>
         <h1>You picked: {params.color}</h1>
       <Link to="/colors" ><button>Back</button></Link>

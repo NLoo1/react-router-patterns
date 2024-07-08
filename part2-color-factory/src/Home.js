@@ -19,7 +19,7 @@ function Home({allColors}) {
       {location.pathname === '/colors' &&
         <h1 className="choose-color">Choose a color</h1>}
       <Routes>
-        <Route exact path='/colors/:color' element={<ColorPicker />} />
+        <Route exact path='/colors/:color' element={<ColorPicker colors={colors} />} />
         <Route exact path='/colors/new' element={<NewColorForm addColor={addColor} />} />
         <Route path="*" element={<Navigate to="/colors" />} /> 
       </Routes>
